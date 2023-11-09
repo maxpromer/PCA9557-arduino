@@ -47,9 +47,10 @@ bool PCA9557::pinMode(int pin, int mode)
     return true;
 }
 
-bool PCA9557::pinModeRegister(uint8_t pinMode)
+bool PCA9557::pinModeRegister(uint8_t pinMode) // 0 = OUTPUT; 1 = INPUT
 {
     CHECK_FAIL_AND_RETURN(this->write_register(CONFIGURATION_REGISTER, pinMode));
+    CHECK_FAIL_AND_RETURN(this->write_register(POLARITY_INVERSION_REGISTER, 0x00)); // Away disable polarity inversion
 
     return true;
 }
