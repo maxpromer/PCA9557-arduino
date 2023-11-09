@@ -47,6 +47,13 @@ bool PCA9557::pinMode(int pin, int mode)
     return true;
 }
 
+bool PCA9557::pinModeRegister(uint8_t pinMode)
+{
+    CHECK_FAIL_AND_RETURN(this->write_register(CONFIGURATION_REGISTER, pinMode));
+
+    return true;
+}
+
 bool PCA9557::digitalWrite(int pin, int value)
 {
     uint8_t output_reg_value = 0;

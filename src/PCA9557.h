@@ -14,6 +14,7 @@ public:
     PCA9557(int address = 0x18, TwoWire *bus = &Wire); // 0x18 => A0, A1, A2 connect to GND
 
     bool pinMode(int pin, int mode);
+    bool pinModeRegister(uint8_t pinMode);
     bool digitalWrite(int pin, int value);
     bool writeRegister(uint8_t value);
     int digitalRead(int pin);
