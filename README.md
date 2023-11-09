@@ -15,8 +15,13 @@ void setup() {
   Serial.begin(115200);
   Wire.begin();
 
+  io.pinModeRegister(0xFF); // Sets all pins as INPUT
+
   io.pinMode(0, INPUT); // Config IO0 of PCA9557 to INPUT mode
   io.pinMode(1, OUTPUT); // Config IO1 of PCA9557 to OUTPUT mode
+
+  io.writeRegister(0x00); // Sets all pins that are outputs to LOW
+  // Serial.println(io.readRegister()); // Reads all the state of all of the inputs
 }
 
 void loop() {
@@ -27,3 +32,4 @@ void loop() {
   // Serial.println("D0 = " + String(io.digitalRead(0)));
 }
 ```
+Be warned the GPIO 0 of the I/O expander is an open-drain output / normal input
